@@ -1,24 +1,23 @@
 ﻿using UnityEngine;
 using UnityEngine.EventSystems;
-using TMPro;
-
 public class EmptyGraphic : MonoBehaviour
 {
     public int gold;
-    public TMP_Text goldtext;
-    public int GoldAmountPerClick = 5;
-
-
-    // Update is called once per frame
+    
+ 
+    public int assignedGoldAmount;
+   
+    public GoldProduction gp;
+    
     void Update()
     {
-        goldtext.text = "Gold: " + gold;
-
-        if(Input.GetMouseButtonDown(0) && isMouseOverUI())
+       
+        
+        if(Input.GetMouseButtonDown(0) && isMouseOverUI() && !gp.buttonActive)
         {
-            OnClickAddGold();
-
+                OnClickAddGold();
         }
+       
     }
 
     public bool isMouseOverUI()
@@ -28,6 +27,11 @@ public class EmptyGraphic : MonoBehaviour
 
     public void OnClickAddGold()
     {
-        gold += GoldAmountPerClick;
+        gold += amountOfGold();
+    }
+
+  private int amountOfGold()
+    {
+        return assignedGoldAmount;
     }
 }
