@@ -1,10 +1,14 @@
-﻿using UnityEngine;
+﻿using UnityEditor;
+using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class GoldProduction : MonoBehaviour
 {
     public GameObject[] buttons;
     public ButtonHighlighted[] bh;
-    
+    public GameObject floatingPressText;
+    public GameObject floatingFountainText;
+    public GameObject floatingFactoryText;
 
     public int priceOnGoldPr;
     public int priceOnGoldFou;
@@ -18,6 +22,9 @@ public class GoldProduction : MonoBehaviour
 
     float time;
     float maxTime = 0.5f;
+    public float pressVal;
+    public float fountainVal;
+    public float factoryVal;
 
     public bool buttonActive;
     public bool canBuyGoldPress;
@@ -30,7 +37,6 @@ public class GoldProduction : MonoBehaviour
     
 
     public EmptyGraphic eg;
-
 
     public int goldPresses = 0;
     public int goldFountains = 0;
@@ -90,17 +96,32 @@ public class GoldProduction : MonoBehaviour
         {
             if (hasGoldPress)
             {
-                eg.gold += pressGold * goldPresses;
+                pressVal = pressGold * goldPresses;
+                eg.gold += (int)pressVal;
+
+                    GameObject prefabObject = Instantiate(floatingPressText) as GameObject;
+                    prefabObject.transform.SetParent(GameObject.FindGameObjectWithTag("PressValSpawner").transform, false);
+                
             }
 
             if (hasGoldFountain)
             {
-                eg.gold += fountainGold * goldFountains;
+                fountainVal = fountainGold * goldFountains;
+                eg.gold += (int)fountainVal;
+
+                GameObject prefabObject = Instantiate(floatingFountainText) as GameObject;
+                prefabObject.transform.SetParent(GameObject.FindGameObjectWithTag("FountainValSpawner").transform, false);
+
+
             }
 
             if (hasGoldFactory)
             {
-                eg.gold += factoryGold * goldFactories;
+                factoryVal = factoryGold * goldFactories;
+                eg.gold += (int)factoryVal;
+
+                GameObject prefabObject = Instantiate(floatingFactoryText) as GameObject;
+                prefabObject.transform.SetParent(GameObject.FindGameObjectWithTag("FactoryValSpawner").transform, false);
             }
 
             time = 0;
@@ -156,7 +177,10 @@ public class GoldProduction : MonoBehaviour
         }
     }
 
+    public void FloatingTextSpawn()
+    {
 
+    }
     private int priceOnGoldPress()
     {
         return priceOnGoldPr;

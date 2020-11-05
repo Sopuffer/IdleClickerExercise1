@@ -6,6 +6,10 @@ TagManager:
   tags:
   - button
   - GameManager
+  - Canvas
+  - PressValSpawner
+  - FountainValSpawner
+  - FactoryValSpawner
   layers:
   - Default
   - TransparentFX
