@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class ButtonHighlighted : MonoBehaviour, IPointerExitHandler, IPointerEnterHandler
+public class Buttons : MonoBehaviour, IPointerExitHandler, IPointerEnterHandler
 {
     public bool isOnButton;
   

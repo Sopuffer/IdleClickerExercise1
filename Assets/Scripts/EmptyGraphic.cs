@@ -1,37 +1,52 @@
 ﻿using UnityEngine;
 using UnityEngine.EventSystems;
+
 public class EmptyGraphic : MonoBehaviour
 {
-    public int gold;
-    
- 
-    public int assignedGoldAmount;
-   
-    public GoldProduction gp;
-    
-    void Update()
+    public bool buttonActive;
+    public GameObject[] buttons;
+    public Buttons[] bh;
+    public Resources _addGold;
+
+    private void Awake()
     {
-       
-        
-        if(Input.GetMouseButtonDown(0) && isMouseOverUI() && !gp.buttonActive)
+        buttons = GameObject.FindGameObjectsWithTag("button");
+    }
+    private void Start()
+    {
+        for (int i = 0; i < buttons.Length; i++)
         {
-                OnClickAddGold();
+            bh[i] = buttons[i].GetComponent<Buttons>();
         }
-       
+    }
+    private void Update()
+    {
+        MouseOverButtons();
+
+        if (Input.GetMouseButtonDown(0) && isMouseOverUI() && !buttonActive)
+        {
+            _addGold.OnClickAddGold();
+        }
+    }
+    public void MouseOverButtons()
+    {
+        for (int i = 0; i < buttons.Length; i++)
+        {
+            if (bh[i].isOnButton)
+            {
+                buttonActive = true;
+                break;
+            }
+            else
+            {
+                buttonActive = false;
+            }
+
+        }
     }
 
     public bool isMouseOverUI()
     {
         return EventSystem.current.IsPointerOverGameObject();
-    }
-
-    public void OnClickAddGold()
-    {
-        gold += amountOfGold();
-    }
-
-  private int amountOfGold()
-    {
-        return assignedGoldAmount;
     }
 }

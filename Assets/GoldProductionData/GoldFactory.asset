@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04a5dba08e84b3b43bcb0c832e25db64, type: 3}
+  m_Name: GoldFactory
+  m_EditorClassIdentifier: 
+  costs:
+    amount: 500
+    resource: {fileID: 11400000, guid: c1a105b6acb190f42b755f80f23f97f4, type: 2}
+  costMultiplier: 1.1
+  productionTime: 1
+  production:
+    amount: 0
+    resource: {fileID: 0}
+  productionMultiplier: 1.05
